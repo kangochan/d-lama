@@ -2,7 +2,7 @@
   <div class="row product-show">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
-       <% if current_user.published? %>
+       <% if user_signed_in? && current_user.published? %>
           <a href="/products/new">管理者</a>
        <% end %>
        <% @products.each do |product| %>

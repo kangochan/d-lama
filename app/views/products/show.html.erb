@@ -4,8 +4,8 @@
       <div class="row">
         <div class="col-md-5 col-sm-6">
           <h2 class="product-title"><%= @product.title %></h2>
-          <% if current_user.published? %>
-          <a href="/products/<%= @product.id %>/edit">管理者</a>
+          <% if user_signed_in? && current_user.published? %>
+            <a href="/products/<%= @product.id %>/edit">管理者</a>
           <% end %>
             <ul class="product-info list-inline">
               <li>放送開始：<%= @product.year %>年<%= @product.month %>月</li>
@@ -85,7 +85,7 @@
             <div class="col-md-3 col-sm-4">
               <div class="review-header text-center">
                 <i class="fa fa-th-list fa-fw" aria-hidden="true"></i>ストーリー構成
-                <% if current_user.published? %>
+                <% if user_signed_in? && current_user.published? %>
                   <a href="/products/<%= @product.id %>/product_structures/new">管理者</a>
                 <% end %>
               </div>
@@ -178,8 +178,8 @@
             </div><hr>
             <div class="product-xs-structure">
               <p>ストーリー構成</p>
-                <% if current_user.published? %>
-                <a href="/products/<%= @product.id %>/product_structures/new">管理者</a>
+                <% if user_signed_in? && current_user.published? %>
+                  <a href="/products/<%= @product.id %>/product_structures/new">管理者</a>
                 <% end %>
               <% @product.product_structures.each do |product_structure| %>
               <p>第<%= product_structure.story_number %>話：<%= product_structure.subtitle %></p>
