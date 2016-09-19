@@ -1,0 +1,34 @@
+body{
+  font-family: Verdana, Arial, "YuGothic", "游ゴシック", sans-serif;
+  font-size: calc(100% + 0.25vw);
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+}
+
+a:link {text-decoration:none;}
+a:visited {text-decoration:none;}
+a:hover {text-decoration:none;}
+a:active {text-decoration:none;}
+
+.btn, .form-control{
+  border-radius: 0px;
+}
+
+/*------------------------  ヘッダー common/header.html.erb  ------------------------*/
+.header{
+  background-color: #ffd700;
+  margin-bottom: 0px;
+}
+
+.username{
+  color: #000000;
+}
+
+/*------------------------  common/footer.html.erb  ------------------------*/
+.footer{
+  color: #000000;
+  padding: 20px 0;
+  margin-top: 20px;
+  background-color:  #ffd700;
+}

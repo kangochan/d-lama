@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row product-show">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+       <% if current_user.published? %>
+          <a href="/products/new">管理者</a>
+       <% end %>
+       <% @products.each do |product| %>
+        <div class="col-md-3 col-sm-4 col-xs-6">
+            <a href="/products/<%= product.id %>">
+              <div class="image">
+                <img src="<%= product.image_url %>" alt="" style="width: 100%;"/>
+              </div>
+              <div class="title text-center">
+                <p><%= product.title %></p>
+              </div>
+            </a>
+            <ul class="data list-inline text-center">
+              <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+              <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
+            </ul>
+        </div>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>

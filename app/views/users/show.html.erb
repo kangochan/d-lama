@@ -1,0 +1,37 @@
+<div class="container-fluid">
+  <div class="row user-page">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <ul class="nav nav-tabs nav-justified nav-head" role="tablist">
+          <li role="presentation" class="active"><a href="#person" data-toggle="tab">レビュー(<%= @user.reviews.count %>)</a></li>
+          <li role="presentation" ><a href="#product" data-toggle="tab">作品()</a></li>
+          <li role="presentation" ><a href="#review" data-toggle="tab">人物()</a></li>
+        </ul>
+        <div id="userTabContent" class="container-fluid tab-content">
+          <div class="row">
+            <div class="tab-pane fade in active" id="person">
+             <% @user.reviews.each do |review| %>
+              <div class="col-md-3 col-sm-4 col-xs-6">
+                  <a href="/products/<%= review.product.id %>">
+                    <div class="product-image">
+                      <img src="<%= review.product.image_url %>"  alt="" style="width: 100%;"/>
+                    </div>
+                    <div class="text text-center">
+                      <p><%= review.product.title %></p>
+                    </div>
+                  </a>
+              </div>
+             <% end %>
+            </div>
+            <div class="tab-pane fade" id="product">
+              <p></p>
+            </div>
+            <div class="tab-pane fade" id="review">
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

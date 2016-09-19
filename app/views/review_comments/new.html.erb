@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row product-detail">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+          <ul class="list-inline">
+           <a href="/users/<%= @review.user.id %>">
+            <li class="review-username"><%= @review.user.nickname %></li>
+           </a>
+            <li class="review-date"><%= @review.created_at.strftime('%Y年%m月%d日') %></li>
+          </ul>
+          <p class="review-rating">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="rate-number"><%= @review.rate %></span>
+          </p>
+          <p class="review-title"><%= @review.title %></p>
+          <p class="review-text"><%= @review.review %></p><hr>
+          <% @review.review_comments.reverse_each do |review_comment| %>
+            <ul class="list-inline">
+              <a href="/users/<%= review_comment.user_id %>">
+                <li class="review_comment-username"><%= review_comment.nickname %></li>
+              </a>
+                <li class="review_comment-date"><%= review_comment.created_at.strftime('%Y年%m月%d日') %></li><br>
+                <li class="review_comment-username"><%= review_comment.comment %></li>
+            </ul><hr>
+          <% end %>
+          <%= form_for [@review, @review_comment] do |f| %>
+            <div class="form-group">
+            <%= f.label :comment, class: "sr-only" %><br />
+            <%= f.text_area :comment, placeholder: "コメント", class: "form-control", rows: "3" %>
+            </div>
+            <div class="form-group text-center">
+              <%= f.submit "投稿" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

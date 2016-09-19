@@ -1,0 +1,243 @@
+<div class="container-fluid">
+  <div class="row product-detail">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-5 col-sm-6">
+          <h2 class="product-title"><%= @product.title %></h2>
+          <% if current_user.published? %>
+          <a href="/products/<%= @product.id %>/edit">管理者</a>
+          <% end %>
+            <ul class="product-info list-inline">
+              <li>放送開始：<%= @product.year %>年<%= @product.month %>月</li>
+              <li>制作：<%= @product.company %></li>
+            </ul>
+          <div class="product-image">
+            <img src="<%= @product.image_url %>" alt="" style="width: 100%;"/>
+          </div>
+          <div class="product-text">
+            <div class="product-rating">
+              <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+              <span class="rate-number"><%= @product.reviews.average(:rate).round(1) %></span>
+              <span class="number">(<%= @product.reviews.count %>)</span>
+            </div>
+            <ul class="product-data list-inline text-right">
+              <li class="product-marks text-center"><i class="fa fa-eye fa-fw" aria-hidden="true"></i><p>1000</p></li>
+              <li class="product-clip text-center"><a href="/products/<%= @product.id %>/reviews/new"><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i><p><%=
+              @product.reviews.count %></p></li>
+              </a>
+            </ul>
+          </div>
+              <div class="product-media">
+                <div class="row text-center">
+                  <div class="col-xs-2 col-xs-offset-1">
+                    <a href="<%= @product.site %>"><i class="fa fa-link" aria-hidden="true"></i></a><p>サイト</p>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a><p>予告</p>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="<%= @product.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a><p>Twitter</p>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="<%= @product.facebook %>"><i class="fa fa-facebook-square" aria-hidden="true"></i></a><p>facebook</p>
+                  </div>
+                  <div class="col-xs-2">
+                    <a href="<%= @product.amazon %>"><i class="fa fa-amazon" aria-hidden="true"></i></a><p>Amazon</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- PC版 -->
+            <div class="col-md-7 col-sm-6 hidden-xs">
+              <div class="md-sm-cast">
+                <div class="product-playwrite">
+                  <p>脚本</p>
+                  <p><span class="cast-tab"><%= @product.playwrite %></span></p>
+                </div>
+                <div class="product-director">
+                  <p>演出</p>
+                  <p><span class="cast-tab"><%= @product.director %></span></p>
+                </div>
+                <div class="product-cast">
+                  <p>キャスト</p>
+                  <ul class="list-inline">
+                   <% @product.casts.each do |cast| %>
+                    <li class="cast-tab"><%= cast.cast %></li>
+                   <% end %>
+                  </ul>
+                </div>
+              </div>
+              <div class="md-sm-story">
+                <p>あらすじ</p>
+                <p><%= @product.detail %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- PC版 -->
+    <div class="container-fluid hidden-xs">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="row">
+            <div class="col-md-3 col-sm-4">
+              <div class="review-header text-center">
+                <i class="fa fa-th-list fa-fw" aria-hidden="true"></i>ストーリー構成
+                <% if current_user.published? %>
+                  <a href="/products/<%= @product.id %>/product_structures/new">管理者</a>
+                <% end %>
+              </div>
+              <div class="product-structure">
+                <% @product.product_structures.each do |product_structure| %>
+                <p>第<%= product_structure.story_number %>話：<%= product_structure.subtitle %></p>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-8">
+              <div class="review-header text-center">
+                <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>この作品に投稿された感想・レビュー
+              </div>
+              <div class="review-item">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <img src="" alt="" class="img-responsive img-circle"/>
+                  </div>
+                  <div class="col-xs-10">
+                   <% @product.reviews.reverse_each do |review| %>
+                    <ul class="list-inline">
+                      <a href="/users/<%= review.user.id %>">
+                      <li class="review-username"><%= review.user.nickname %></li>
+                      </a>
+                      <li class="review-date"><%= review.created_at.strftime('%Y年%m月%d日') %></li>
+                    </ul>
+                    <p class="review-rating">
+                      <i class="fa fa-star" aria-hidden="true"></i>
+                      <span class="rate-number"><%= review.rate %></span>
+                    </p>
+                    <p class="review-title"><%= review.title %></p>
+                    <p class="review-text"><%= review.review %></p>
+                    <hr>
+                    <ul class="list-inline text-right">
+                      <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
+                      <li><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i>いいね</li>
+                    </ul>
+                   <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 hidden-sm">
+              <div class="review-header text-center">
+                <i class="fa fa-thumbs-up fa-fw" aria-hidden="true"></i>今おすすめのドラマ
+              </div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12">
+                  <div class="product-item">
+                    <a href="#">
+                      <div class="image">
+                        <img src="" alt=""/>
+                      </div>
+                      <div class="text text-center">
+                        <p></p>
+                    </a>
+                        <p class="rating">
+                          <i class="fa fa-star" aria-hidden="true"></i>
+                          <span class="rate-number">5.0</span>
+                        </p>
+                      </div>
+                    <ul class="data list-inline text-center">
+                      <li class="marks text-center"><i class="fa fa-eye fa-fw" aria-hidden="true"></i>1000</li>
+                      <li class="clip text-center"><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>1200</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- スマホ版 -->
+    <div class="container-fluid">
+      <div class="product-nav">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-justified visible-xs-block" role="tablist">
+          <li role="presentation" class="active"><a href="#story" aria-controls="home" role="tab" data-toggle="tab">作品詳細</a></li>
+          <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">レビュー</a></li>
+          <li role="presentation"><a href="#cast" aria-controls="cast" role="tab" data-toggle="tab">キャスト</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="product-nav-content tab-content visible-xs-block">
+          <div role="tabpanel" class="tab-pane active" id="story">
+            <div class="product-xs-story">
+              <p>あらすじ</p>
+              <p><%= @product.detail %></p>
+            </div><hr>
+            <div class="product-xs-structure">
+              <p>ストーリー構成</p>
+                <% if current_user.published? %>
+                <a href="/products/<%= @product.id %>/product_structures/new">管理者</a>
+                <% end %>
+              <% @product.product_structures.each do |product_structure| %>
+              <p>第<%= product_structure.story_number %>話：<%= product_structure.subtitle %></p>
+              <% end %>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="review">
+            <div class="review-xs-header">
+              <div class="review-xs-number"><i class="fa fa-users fa-fw" aria-hidden="true"></i>レビュー数(<%= @product.reviews.count %>)</div>
+              <div class="text-right"><a href="/products/<%= @product.id %>/reviews/new"><button class="btn btn-default"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>レビューする</button></a></div>
+            </div>
+            <div class="review-item">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img src="" alt="" class="img-responsive img-circle"/>
+                </div>
+                <div class="col-xs-10">
+                 <% @product.reviews.reverse_each do |review| %>
+                  <ul class="list-inline">
+                   <a href="/users/<%= review.user.id %>">
+                    <li class="review-username"><%= review.user.nickname %></li>
+                   </a>
+                    <li class="review-date"><%= review.created_at.strftime('%Y年%m月%d日') %></li>
+                  </ul>
+                  <p class="review-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <span class="rate-number"><%= review.rate %></span>
+                  </p>
+                  <p class="review-title"><%= review.title %></p>
+                  <p class="review-text"><%= review.review %></p>
+                  <hr>
+                  <ul class="list-inline text-right">
+                    <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
+                    <li><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i>いいね</li>
+                  </ul>
+                 <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="cast">
+            <div class="product-scriptwriter">
+              <p>脚本</p>
+              <p><span class="cast-tab"><%= @product.playwrite %></span></p>
+            </div>
+            <div class="product-director">
+              <p>演出</p>
+              <p><span class="cast-tab"><%= @product.director %></span></p>
+            </div>
+            <div class="product-cast">
+              <p>キャスト</p>
+              <ul class="list-inline">
+                <% @product.casts.each do |cast| %>
+                  <li class="cast-tab"><%= cast.cast %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
