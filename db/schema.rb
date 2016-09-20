@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919074011) do
+ActiveRecord::Schema.define(version: 20160920061752) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
@@ -78,13 +78,14 @@ ActiveRecord::Schema.define(version: 20160919074011) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "product_id", limit: 4
-    t.text     "review",     limit: 65535
+    t.integer  "user_id",     limit: 4
+    t.integer  "product_id",  limit: 4
+    t.text     "review",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title",      limit: 255
-    t.decimal  "rate",                     precision: 2, scale: 1
+    t.string   "title",       limit: 255
+    t.decimal  "rate",                      precision: 2, scale: 1
+    t.integer  "likes_count", limit: 4
   end
 
   create_table "users", force: :cascade do |t|

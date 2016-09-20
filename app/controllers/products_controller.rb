@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   end
   def show
     @product = Product.find(params[:id])
+    @like = ProductLike.find_by(user_id: current_user.id, product_id: params[:id])
+    @review_like = ReviewLike.find_by(user_id: current_user.id)
   end
 
   def new

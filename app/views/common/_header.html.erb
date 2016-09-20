@@ -24,6 +24,11 @@
               <% end %>
               </form>
               <ul class="nav navbar-nav navbar-right">
+                <% if user_signed_in? && current_user.published? %>
+                  <li>
+                    <%= link_to "作品投稿", new_product_path %>
+                  </li>
+                <% end %>
               <% if user_signed_in? %>
                 <li><a href="#">画像</a></li>
                 <li class="dropdown">
@@ -34,9 +39,15 @@
               <% end %>
                   <ul class="dropdown-menu" role="menu">
                     <% if user_signed_in? %>
-                    <li><a href="/users/<%= current_user.id %>">マイページ</a></li>
-                    <li class="entry-button"><%= link_to 'サインアウト', "/users/sign_out", method: :delete %></li>
-                    <li><a href="/users/<%= current_user.id %>/edit">プロフィール編集</a></li>
+                      <li>
+                        <%= link_to "マイページ", user_path(current_user) %>
+                      </li>
+                      <li class="entry-button">
+                        <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
+                      </li>
+                      <li>
+                        <%= link_to "プロフィール編集", edit_user_path(current_user) %>
+                      </li>
                     <% end %>
                   </ul>
                 </li>

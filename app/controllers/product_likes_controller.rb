@@ -1,12 +1,15 @@
 class ProductLikesController < ApplicationController
   def create
-    @like = Like.create(user_id: current_user.id, product_id: params[:product_id])
-    @likes = Like.where(product_id: params[:product_id])
-    @tweets = Tweet.all
+    @like = ProductLike.create(user_id: current_user.id, product_id: params[:product_id])
+    @likes = ProductLike.where(product_id: params[:product_id])
+    @product = Product.find(params[:product_id])
   end
+
   def destroy
-    @like = Like.find_by(user_id: current_user.id, product_id: params[:product_id])
-    @likes = Like.where(product_id: params[:product_id])
-    @tweets = Tweet.all
+    like = ProductLike.find_by(user_id: current_user.id, product_id: params[:product_id])
+    like.destroy
+    @like = ProductLike.find_by(user_id: current_user.id, product_id: params[:product_id])
+    @likes = ProductLike.where(product_id: params[:product_id])
+    @product = Product.find(params[:product_id])
   end
 end

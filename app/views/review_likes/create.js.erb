@@ -1,0 +1,1 @@
+$(".review-marks-<%= @review.id %>").html("<%= j(render partial: 'review_likes', locals: { review: @review, review_likes: @review_likes, review_like: @review_like}) %>")

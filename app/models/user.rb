@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :product_like
+  has_many :product_likes
+  has_many :review_likes
   has_many :reviews
   validates :nickname, presence: true
 

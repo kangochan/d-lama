@@ -21,10 +21,9 @@
               <span class="number">(<%= @product.reviews.count %>)</span>
             </div>
             <ul class="product-data list-inline text-right">
-              <li class="product-marks text-center"><i class="fa fa-eye fa-fw" aria-hidden="true"></i><p>1000</p></li>
               <li class="product-clip text-center"><a href="/products/<%= @product.id %>/reviews/new"><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i><p><%=
-              @product.reviews.count %></p></li>
-              </a>
+              @product.reviews.count %></p></a></li>
+              <li class="product-marks text-center"><%= render partial: "product_likes/product_likes", locals: { product: @product, like: @like, likes: @likes } %></li>
             </ul>
           </div>
               <div class="product-media">
@@ -121,7 +120,7 @@
                     <hr>
                     <ul class="list-inline text-right">
                       <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
-                      <li><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i>いいね</li>
+                      <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
                     </ul>
                    <% end %>
                   </div>
@@ -213,7 +212,7 @@
                   <hr>
                   <ul class="list-inline text-right">
                     <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
-                    <li><i class="fa fa-heart-o fa-fw" aria-hidden="true"></i>いいね</li>
+                    <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
                   </ul>
                  <% end %>
                 </div>
