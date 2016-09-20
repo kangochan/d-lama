@@ -119,7 +119,7 @@
                     <p class="review-text"><%= review.review %></p>
                     <hr>
                     <ul class="list-inline text-right">
-                      <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
+                      <li><%= link_to "コメント", new_product_review_review_comment_path(@product, review) %><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>(<%= review.review_comments.count %>)</li>
                       <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
                     </ul>
                    <% end %>
@@ -211,7 +211,7 @@
                   <p class="review-text"><%= review.review %></p>
                   <hr>
                   <ul class="list-inline text-right">
-                    <li><a href="/reviews/<%= review.id %>/review_comments/new "><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)</a></li>
+                    <li><%= link_to "コメント", new_product_review_review_comment_path(@product, review) %><i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>(<%= review.review_comments.count %>)</li>
                     <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
                   </ul>
                  <% end %>

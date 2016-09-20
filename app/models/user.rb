@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_many :product_likes
   has_many :review_likes
   has_many :reviews
+  has_many :revieww_comments
   validates :nickname, presence: true
 
   enum status: {draft: 0, published: 1}
