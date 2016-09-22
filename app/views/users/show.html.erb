@@ -1,15 +1,29 @@
 <div class="container-fluid">
   <div class="row user-page">
     <div class="col-md-10 col-md-offset-1">
+      <div class="row user-profile">
+        <div class="col-md-2 col-sm-3 col-xs-5 user-image">
+          <%= image_tag "", class:"img-thumbnail" %>
+        </div>
+        <div class="col-md-10 col-sm-9 col-xs-7">
+          <p><%= @user.nickname %></p>
+          <p><%= @user.introduction %></p>
+          <% if @user == current_user %>
+            <%= link_to edit_user_path(current_user), class:"btn btn-default btn-sm" do %>
+              <i class="fa fa-cog fa-fw" aria-hidden="true"></i>プロフィール編集
+            <% end %>
+          <% end %>
+        </div>
+      </div>
       <div class="row">
+       <div role="tabpanel">
         <ul class="nav nav-tabs nav-justified nav-head" role="tablist">
-          <li role="presentation" class="active"><a href="#person" data-toggle="tab">レビュー(<%= @user.reviews.count %>)</a></li>
-          <li role="presentation" ><a href="#product" data-toggle="tab">作品()</a></li>
-          <li role="presentation" ><a href="#review" data-toggle="tab">人物()</a></li>
+          <li role="presentation" class="active"><a href="#review" data-toggle="tab">レビュー(<%= @user.reviews.count %>)</a></li>
+          <li role="presentation" ><a href="#product" data-toggle="tab">作品(<%= @user.product_likes.count %>)</a></li>
         </ul>
         <div id="userTabContent" class="container-fluid tab-content">
-          <div class="row">
-            <div class="tab-pane fade in active" id="person">
+          <div class="tab-content row">
+            <div role="tabpanel" class="tab-pane active" id="review">
              <% @user.reviews.each do |review| %>
               <div class="col-md-3 col-sm-4 col-xs-6">
                   <a href="/products/<%= review.product.id %>">
@@ -23,14 +37,23 @@
               </div>
              <% end %>
             </div>
-            <div class="tab-pane fade" id="product">
-              <p></p>
-            </div>
-            <div class="tab-pane fade" id="review">
-              <p></p>
+            <div role="tabpanel" class="tab-pane" id="product">
+              <% @user.product_likes.each do |product_like| %>
+               <div class="col-md-3 col-sm-4 col-xs-6">
+                   <%= link_to product_path(product_like.product) do %>
+                     <div class="product-image">
+                       <img src="<%= product_like.product.image_url %>"  alt="" style="width: 100%;"/>
+                     </div>
+                     <div class="text text-center">
+                       <p><%= product_like.product.title %></p>
+                     </div>
+                   <% end %>
+               </div>
+              <% end %>
             </div>
           </div>
         </div>
+       </div>
       </div>
     </div>
   </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160920061752) do
+ActiveRecord::Schema.define(version: 20160922044738) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
@@ -48,10 +48,10 @@ ActiveRecord::Schema.define(version: 20160920061752) do
     t.string   "playwrite",   limit: 255
     t.text     "site",        limit: 65535
     t.text     "image_url",   limit: 65535
-    t.text     "facebook",    limit: 65535
     t.integer  "likes_count", limit: 4
     t.integer  "year",        limit: 4
     t.integer  "month",       limit: 4
+    t.text     "wikipedia",   limit: 65535
   end
 
   create_table "products_casts", force: :cascade do |t|

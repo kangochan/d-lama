@@ -13,25 +13,11 @@
         </div>
         <%= form_for [@product, @review] do |f| %>
 
-           <script type="text/javascript">
-            $(function(){
-              $('#star_rank').raty({
-                half     : true,
-                starHalf : '<%= asset_path('star-half.png') %>',
-                starOff  : '<%= asset_path('star-off.png') %>',
-                starOn   : '<%= asset_path('star-on.png') %>',
-                target    : '#hint',
-                targetKeep: true,
-              click: function(score, evt) {
-                $("rate").val(score);
-              }
-            });
-            });
-          </script>
-          <div id="star_rank"></div>
-          <%= f.label :rate, class: "sr-only" %>
-          <%= f.hidden_field :rate, id: "hint" %>
-
+          <div class="form-group">
+            <div id="star_rank"></div>
+            <%= f.label :rate, class: "sr-only" %>
+            <%= f.hidden_field :rate, id: "hint" %>
+          </div>
 
           <div class="form-group">
             <%= f.label :title, class: "sr-only" %><br />
@@ -46,9 +32,21 @@
             <%= f.submit "投稿" %>
           </div>
         <% end %>
-
         </div>
       </div>
     </div>
   </div>
-</div
+</div>
+<script>
+  $('#star_rank').raty({
+    half     : true,
+    starHalf : '<%= asset_path('star-half.png') %>',
+    starOff  : '<%= asset_path('star-off.png') %>',
+    starOn   : '<%= asset_path('star-on.png') %>',
+    target    : '#hint',
+    targetKeep: true,
+    click: function(score, evt) {
+      $("rate").val(score);
+    }
+  });
+</script>
