@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     current_user.create(user_params)
   end
 
+  def search
+    @users = User.where('nickname LIKE(?)', "%#{params[:keyword]}%").limit(20)
+  end
+
   def update
     current_user.update(user_params)
     redirect_to controller: :users, action: :show

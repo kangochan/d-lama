@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <div class="row product-detail">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <h4><%= @cast.cast %>の出演・関連ドラマ <%= @cast.products_casts.count %>作品</h4>
+          <% @cast.products.each do |product| %>
+            <div class="col-md-3 col-sm-4 col-xs-6">
+              <%= link_to product_path(product) do %>
+                <div class="image">
+                  <img src="<%= product.image_url %>" alt=""/>
+                </div>
+                <div class="title text-center">
+                  <p><%= product.title %></p>
+                </div>
+              <% end %>
+              <ul class="data list-inline text-center">
+                <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+                <li class="clip text-center">
+                  <%= link_to new_product_review_path(product) do %>
+                    <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

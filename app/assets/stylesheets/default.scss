@@ -25,10 +25,22 @@ a:active {text-decoration:none;}
   color: #000000;
 }
 
+.search{
+  color: #000000;
+}
+
 /*------------------------  common/footer.html.erb  ------------------------*/
 .footer{
   color: #000000;
   padding: 20px 0;
   margin-top: 20px;
   background-color:  #ffd700;
+}
+
+#star_rank img{
+  width: 30px;
+}
+
+#empty img{
+  width: 30px;
 }

@@ -3,81 +3,107 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <div class="text-center">
-          <h3>作品登録</h3><hr>
+          <h3>作品登録</h3>
+          <hr>
         </div>
 
-            <div class="personal_data col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-              <%= form_for @product do |f| %>
+        <div class="personal_data col-sm-8 col-sm-offset-2">
+          <div class="row form-horizontal">
+            <%= form_for @product do |f| %>
+              <div class="form-group">
+                <%= f.label :タイトル, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :title, placeholder: "題名", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :title, class: "sr-only" %><br />
-                    <%= f.text_field :title, placeholder: "題名", class: "form-control" %>
-                  </div>
-
-
-                  <div class="form-group">
-                    <%= f.label :image_url, class: "sr-only" %><br />
-                    <%= f.text_field :image_url, placeholder: "画像のurl", class: "form-control" %>
-                  </div>
-
-
-                  <div class="form-group">
-                    <%= f.label :company, class: "sr-only" %><br />
-                    <%= f.text_field :company, placeholder: "制作", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :画像, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :image_url, placeholder: "画像のurl", class: "form-control" %>
+                </div>
+              </div>
 
 
-                  <div class="form-group">
-                    <%= f.label :detail, class: "sr-only" %><br />
-                    <%= f.text_area :detail, placeholder: "あらすじ", class: "form-control", rows: "5" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :会社, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :company, placeholder: "制作", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :site, class: "sr-only" %><br />
-                    <%= f.text_field :site, placeholder: "サイト", class: "form-control" %>
-                  </div>
 
-                  <div class="form-group">
-                    <%= f.label :twitter, class: "sr-only" %><br />
-                    <%= f.text_field :twitter, placeholder: "twitter", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :あらすじ, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_area :detail, placeholder: "あらすじ", class: "form-control", rows: "5" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :facebook, class: "sr-only" %><br />
-                    <%= f.text_field :facebook, placeholder: "facebook", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :公式サイト, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :site, placeholder: "サイト", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :amazon, class: "sr-only" %><br />
-                    <%= f.text_field :amazon, placeholder: "amazon", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :twitter, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :twitter, placeholder: "twitter", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :director, class: "sr-only" %><br />
-                    <%= f.text_field :director, placeholder: "演出", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :Wikipedia, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :wikipedia, placeholder: "wikipedia", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :playwrite, class: "sr-only" %><br />
-                    <%= f.text_field :playwrite, placeholder: "脚本", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :amazon, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :amazon, placeholder: "amazon", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :year, class: "sr-only" %><br />
-                    <%= f.text_field :year, placeholder: "年", class: "form-control" %>
-                  </div>
+              <div class="form-group">
+                <%= f.label :演出, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :director, placeholder: "演出", class: "form-control" %>
+                </div>
+              </div>
 
-                  <div class="form-group">
-                    <%= f.label :month, class: "sr-only" %><br />
+              <div class="form-group">
+                <%= f.label :脚本家, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :playwrite, placeholder: "脚本", class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :製作年, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
+                  <%= f.text_field :year, placeholder: "年", class: "form-control" %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <%= f.label :製作月, class: "control-label col-sm-3" %>
+                <div class="col-sm-9">
                     <%= f.text_field :month, placeholder: "月", class: "form-control" %>
-                  </div>
+                </div>
+              </div>
 
-
-                  <div class="form-group text-center">
-                    <%= f.submit "変更内容を保存する" %>
-                  </div>
-              <% end %>
-            </div>
+              <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                  <%= f.submit "内容を保存する", class: "btn btn-primary" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
