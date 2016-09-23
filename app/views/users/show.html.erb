@@ -27,8 +27,8 @@
              <% @user.reviews.each do |review| %>
               <div class="col-md-3 col-sm-4 col-xs-6">
                   <a href="/products/<%= review.product.id %>">
-                    <div class="product-image">
-                      <img src="<%= review.product.image_url %>"  alt="" style="width: 100%;"/>
+                    <div class="product-user-image">
+                      <img src="<%= review.product.image_url %>"  alt="">
                     </div>
                     <div class="text text-center">
                       <p><%= review.product.title %></p>
@@ -41,8 +41,8 @@
               <% @user.product_likes.each do |product_like| %>
                <div class="col-md-3 col-sm-4 col-xs-6">
                    <%= link_to product_path(product_like.product) do %>
-                     <div class="product-image">
-                       <img src="<%= product_like.product.image_url %>"  alt="" style="width: 100%;"/>
+                     <div class="product-user-image">
+                       <img src="<%= product_like.product.image_url %>"  alt="">
                      </div>
                      <div class="text text-center">
                        <p><%= product_like.product.title %></p>
