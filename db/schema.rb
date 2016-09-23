@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922044738) do
+ActiveRecord::Schema.define(version: 20160923092409) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
