@@ -17,8 +17,8 @@
               <li class="clip text-center">
                 <%= link_to new_product_review_path(product) do %>
                   <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
-                <% end %>
                   <%= product.reviews.count %>
+                <% end %>
               </li>
              </ul>
           </div>
