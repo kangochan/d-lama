@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    product_ids = @user.reviews.group(:product_id).order('count_product_id DESC').count(:product_id).keys
+    @reviews = product_ids.map { |id| Product.find(id) }
   end
 
   def edit
