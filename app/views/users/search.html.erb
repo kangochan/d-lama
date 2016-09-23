@@ -6,13 +6,13 @@
           <div class="col-md-1 col-sm-2 col-xs-2 user-image">
             <%= image_tag "", class:"img-thumbnail" %>
         　</div>
-        <div class="col-md-1 col-sm-2 col-xs-4">
+        <div class="col-md-2 col-sm-2 col-xs-4">
           <%= link_to user_path(user) do %>
             <p><%= user.nickname %></p>
           <% end %>
             <ul class="list-inline">
-              <li class="fa fa-pencil fa-fw" aria-hidden="true"><%= user.reviews.count %></li>
-              <li class="fa fa-bookmark fa-fw" aria-hidden="true"><%= user.product_likes.count %></li>
+              <li class="fa fa-pencil fa-fw" aria-hidden="true"></li><%= user.reviews.count %>
+              <li class="fa fa-bookmark fa-fw" aria-hidden="true"></li><%= user.product_likes.count %>
             </ul>
         </div>
         <% end %>

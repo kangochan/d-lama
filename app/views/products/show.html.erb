@@ -267,21 +267,21 @@
         </div>
       </div>
     </div>
-    <script>
-      <% if @product.reviews.present? %>
-        $('#star_rank').raty({
-          readOnly: true,
-          score: '<%= @product.reviews.average(:rate).round(1) %>',
-          half     : true,
-          starHalf : '<%= asset_path('star-half.png') %>',
-          starOff  : '<%= asset_path('star-off.png') %>',
-          starOn   : '<%= asset_path('star-on.png') %>'
-        });
-      <% else %>
-        $('#empty').raty({
-          readOnly: true,
-          score: '0',
-          starOff  : '<%= asset_path('star-off.png') %>'
-        });
-      <% end %>
-  　</script>
+<script>
+  <% if @product.reviews.present? %>
+    $('#star_rank').raty({
+      readOnly: true,
+      score: '<%= @product.reviews.average(:rate).round(1) %>',
+      half     : true,
+      starHalf : '<%= asset_path('star-half.png') %>',
+      starOff  : '<%= asset_path('star-off.png') %>',
+      starOn   : '<%= asset_path('star-on.png') %>'
+    });
+  <% else %>
+    $('#empty').raty({
+      readOnly: true,
+      score: '0',
+      starOff  : '<%= asset_path('star-off.png') %>'
+    });
+  <% end %>
+</script>
