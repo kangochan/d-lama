@@ -26,14 +26,14 @@
             <div role="tabpanel" class="tab-pane active" id="review">
              <% @user.reviews.each do |review| %>
               <div class="col-md-3 col-sm-4 col-xs-6">
-                  <a href="/products/<%= review.product.id %>">
+                  <%= link_to product_path(review.product) do %>
                     <div class="product-user-image">
                       <img src="<%= review.product.image_url %>"  alt="">
                     </div>
                     <div class="text text-center">
                       <p><%= review.product.title %></p>
                     </div>
-                  </a>
+                  <% end %>
               </div>
              <% end %>
             </div>
