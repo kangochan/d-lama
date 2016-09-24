@@ -18,10 +18,11 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.build_image
   end
 
   def create
-    @product = Product.new(create_params)
+    @product = Product.new(product_params)
     @product.save
     redirect_to controller: :products, action: :show, id: @product.id
   end
@@ -29,22 +30,18 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.build_image
   end
 
   def update
     @product = Product.find(params[:id])
-    @product.update(update_params)
+    @product.update(product_params)
     redirect_to controller: :products, action: :show, id: @product.id
   end
 
   private
-  def create_params
-    params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site)
-  end
-
-  private
-  def update_params
-    params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site)
+  def product_params
+    params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site, image_attributes: [:id, :image_url])
   end
 
 end

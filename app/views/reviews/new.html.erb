@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
           <div class="col-md-6 col-sm-6 hidden-xs">
-            <img src="<%= @product.image_url %>" alt="" style="width: 100%;"/><hr>
+            <img src="" alt="" style="width: 100%;"/><hr>
           </div>
         <div class="col-md-6 col-sm-6 hidden-xs">
           <h1 class="product-title"><%= @product.title %></h1>
@@ -12,6 +12,15 @@
           <h5 class="product-company">制作：<%= @product.company %></h5>
         </div>
         <%= form_for [@product, @review] do |f| %>
+
+          <% if @review.errors.any? %>
+            <div class="alert alert-danger text-center" role="alert">
+              <h4><%= @review.errors.count %>件の未記入のところがあります。</h4>
+                <% @review.errors.full_messages.each do |message| %>
+                  <p><%= message %></p>
+                <% end %>
+            </div>
+          <% end %>
 
           <div class="form-group">
             <div id="star_rank"></div>

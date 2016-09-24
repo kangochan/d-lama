@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    user = User.find(params[:id])
+    current_user.build_image
   end
 
   def create
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname, :gender, :introduction)
+    params.require(:user).permit(:nickname, :email, :gender, :introduction, image_attributes: [:id, :image_url])
   end
 
 end
