@@ -12,7 +12,7 @@
               <li>制作：<%= @product.company %></li>
             </ul>
           <div class="product-image">
-            <img src="<%= @product.image_url %>" alt="" style="width: 100%;"/>
+            <%= image_tag @product.image %>
           </div>
           <div class="product-text">
             <div class="product-rating">

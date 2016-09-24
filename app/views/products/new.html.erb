@@ -7,7 +7,7 @@
           <hr>
         </div>
 
-        <div class="personal_data col-sm-8 col-sm-offset-2">
+        <div class="product_data col-sm-8 col-sm-offset-2">
           <div class="row form-horizontal">
             <%= form_for @product do |f| %>
               <div class="form-group">
@@ -19,9 +19,11 @@
 
               <div class="form-group">
                 <%= f.label :画像, class: "control-label col-sm-3" %>
-                <div class="col-sm-9">
-                  <%= f.text_field :image_url, placeholder: "画像のurl", class: "form-control" %>
-                </div>
+                  <div class="col-sm-9">
+                    <%= f.fields_for :image do |image| %>
+                      <%= image.file_field :image_url %>
+                    <% end %>
+                  </div>
               </div>
 
 

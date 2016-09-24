@@ -6,37 +6,55 @@
           <h3>プロフィール編集</h3><hr>
         </div>
 
-            <div class="personal_data col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-              <%= form_for current_user do |f| %>
+            <div class="personal_data col-sm-8 col-sm-offset-2">
+              <div class="row form-horizontal">
+                <%= form_for current_user do |f| %>
 
-                  <div class="form-group">
-                    <%= f.label :nickname, class: "sr-only" %><br />
-                    <%= f.text_field :nickname, placeholder: "ニックネーム(必須)", class: "form-control" %>
-                  </div>
+                    <div class="form-group">
+                      <%= f.label :ニックネーム, class: "control-label col-sm-3" %>
+                      <div class="col-sm-9">
+                        <%= f.text_field :nickname, placeholder: "ニックネーム(必須)", class: "form-control" %>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :プロフィール画像, class: "control-label col-sm-3" %>
+                        <div class="col-sm-9">
+                          <%= f.fields_for :image do |image| %>
+                            <%= image.file_field :image_url %>
+                          <% end %>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :メールアドレス, class: "control-label col-sm-3" %>
+                      <div class="col-sm-9">
+                        <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control" %>
+                      </div>
+                    </div>
 
 
-                  <div class="form-group">
-                    <%= f.label :email, class: "sr-only" %><br />
-                    <%= f.email_field :email, placeholder: "メールアドレス", class: "form-control" %>
-                  </div>
+                    <div class="form-group">
+                      <%= f.label :性別, class: "sr-only" %>
+                      <div class="col-sm-9 col-sm-offset-3">
+                        <label><%= f.radio_button :gender, "1" %>男性</label>
+                        <label><%= f.radio_button :gender, "2" %>女性</label>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :自己紹介, class: "control-label col-sm-3" %>
+                      <div class="col-sm-9">
+                        <%= f.text_area :introduction, placeholder: "自己紹介", class: "form-control", rows: "3" %>
+                      </div>
+                    </div>
 
 
-                  <div class="form-group">
-                    <%= f.label :gender, class: "sr-only" %><br />
-                    <label><%= f.radio_button :gender, "1" %>男性</label>
-                    <label><%= f.radio_button :gender, "2" %>女性</label>
-                  </div>
-
-                  <div class="form-group">
-                    <%= f.label :introduction, class: "sr-only" %><br />
-                    <%= f.text_area :introduction, placeholder: "自己紹介", class: "form-control", rows: "3" %>
-                  </div>
-
-
-                  <div class="form-group text-center">
-                    <%= f.submit "変更内容を保存する" %>
-                  </div>
-              <% end %>
+                    <div class="form-group text-center">
+                      <%= f.submit "変更内容を保存する" %>
+                    </div>
+                <% end %>
+              </div>
             </div>
       </div>
     </div>

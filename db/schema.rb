@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160923092409) do
+ActiveRecord::Schema.define(version: 20160924052452) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer  "imageable_id",   limit: 4
+    t.string   "imageable_type", limit: 255
+    t.string   "image_url",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,7 +55,6 @@ ActiveRecord::Schema.define(version: 20160923092409) do
     t.string   "director",    limit: 255
     t.string   "playwrite",   limit: 255
     t.text     "site",        limit: 65535
-    t.text     "image_url",   limit: 65535
     t.integer  "likes_count", limit: 4
     t.integer  "year",        limit: 4
     t.integer  "month",       limit: 4
