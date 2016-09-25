@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.order('id ASC').limit(20)
+    @products = Product.order('id ASC').limit(3)
+    product_ids = Review.group(:product_id).order('count_product_id DESC').limit(3).count(:product_id).keys
+    @ranking = product_ids.map { |id| Product.find(id) }
   end
   def show
     @product = Product.find(params[:id])
@@ -30,7 +32,7 @@ class ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
-    @product.build_image
+    @product.build_image if @product.image.blank?
   end
 
   def update

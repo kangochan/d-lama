@@ -3,18 +3,20 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <% @users.each do |user| %>
-          <div class="col-md-1 col-sm-2 col-xs-2 user-image">
-            <%= image_tag "", class:"img-thumbnail" %>
-        　</div>
-        <div class="col-md-2 col-sm-2 col-xs-4">
-          <%= link_to user_path(user) do %>
-            <p><%= user.nickname %></p>
-          <% end %>
+          <div class="col-md-2 col-sm-3 col-xs-4 user-image text-center">
+            <%= link_to user_path(user) do %>
+              <% if user.image.present? %>
+                <%= image_tag user.image.image_url, class:"profile-images img-responsive center-block img-rounded" %>
+              <% else %>
+                <%= image_tag "default.png", class:"profile-images img-responsive center-block" %>
+              <% end %>        　
+                <p><%= user.nickname %></p>
+            <% end %>
             <ul class="list-inline">
               <li class="fa fa-pencil fa-fw" aria-hidden="true"></li><%= user.reviews.count %>
               <li class="fa fa-bookmark fa-fw" aria-hidden="true"></li><%= user.product_likes.count %>
             </ul>
-        </div>
+          </div>
         <% end %>
       </div>
     </div>

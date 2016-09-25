@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    current_user.build_image
+    current_user.build_image if current_user.image.blank?
   end
 
   def create
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:nickname, :email, :gender, :introduction, image_attributes: [:id, :image_url])
+    params.require(:user).permit(:nickname, :email, :gender, :introduction, :image_cache, image_attributes: [:id, :image_url])
   end
 
 end

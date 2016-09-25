@@ -3,8 +3,8 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-          <div class="col-md-6 col-sm-6 hidden-xs">
-            <img src="" alt="" style="width: 100%;"/><hr>
+          <div class="col-md-6 col-sm-6 hidden-xs product-review-image">
+            <%= image_tag @product.image.image_url %><hr>
           </div>
         <div class="col-md-6 col-sm-6 hidden-xs">
           <h1 class="product-title"><%= @product.title %></h1>

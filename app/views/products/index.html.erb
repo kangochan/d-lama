@@ -2,22 +2,72 @@
   <div class="row product-show">
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
-       <% @products.each do |product| %>
-        <div class="col-md-3 col-sm-4 col-xs-6">
-            <a href="/products/<%= product.id %>">
-              <div class="image">
-                <img src="" alt=""/>
-              </div>
-              <div class="title text-center">
-                <p><%= product.title %></p>
-              </div>
-            </a>
-            <ul class="data list-inline text-center">
-              <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
-              <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
-            </ul>
+        <div class="lineup col-md-9">
+          <div class="row">
+            <div class="top-content-header">
+              今日のラインナップ
+            </div>
+              <% @products.each do |product| %>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <a href="/products/<%= product.id %>">
+                    <div class="image">
+                      <%= image_tag product.image.image_url %>
+                    </div>
+                    <div class="title text-center">
+                      <p><%= product.title %></p>
+                    </div>
+                  </a>
+                  <ul class="data list-inline text-center">
+                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+                    <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
+                  </ul>
+                </div>
+              <% end %>
+          </div>
+          <div class="row">
+            <div class="top-content-header">
+              明日のラインナップ
+            </div>
+              <% @products.each do |product| %>
+                <div class="col-md-4 col-sm-4 col-xs-6">
+                  <a href="/products/<%= product.id %>">
+                    <div class="image">
+                      <%= image_tag product.image.image_url %>
+                    </div>
+                    <div class="title text-center">
+                      <p><%= product.title %></p>
+                    </div>
+                  </a>
+                  <ul class="data list-inline text-center">
+                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+                    <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
+                  </ul>
+                </div>
+              <% end %>
+          </div>
         </div>
-       <% end %>
+        <div class="top-ranking col-md-3">
+          <div class="row">
+            <div class="top-content-header">
+              関心度ランキング
+            </div>
+            <% @ranking.each.with_index(1) do |product, i| %>
+              <div class="col-md-12 col-sm-4 col-xs-6">
+                <%= link_to product_path(product) do %>
+                  <div class="image">
+                    <%= image_tag product.image.image_url %>
+                  </div>
+                  <div class="text text-center">
+                    <p><%= product.title %></p>
+                  </div>
+                <% end %>
+                <p class="ranking-text">
+                  <span><%= i %></span>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
