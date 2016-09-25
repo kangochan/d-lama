@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924052452) do
+ActiveRecord::Schema.define(version: 20160925101337) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20160924052452) do
     t.integer  "year",        limit: 4
     t.integer  "month",       limit: 4
     t.text     "wikipedia",   limit: 65535
+    t.integer  "date",        limit: 4
   end
 
   create_table "products_casts", force: :cascade do |t|

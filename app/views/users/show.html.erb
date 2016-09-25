@@ -3,7 +3,11 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row user-profile">
         <div class="col-md-2 col-sm-3 col-xs-5 user-image">
-          <%= image_tag "", class:"img-thumbnail" %>
+          <% if @user.image.present? %>
+            <%= image_tag @user.image.image_url.thumb, class:"img-rounded" %>
+          <% else %>
+            <%= image_tag "default.png", class:"profile-image" %>
+          <% end %>
         </div>
         <div class="col-md-10 col-sm-9 col-xs-7">
           <p><%= @user.nickname %></p>
@@ -28,7 +32,7 @@
               <div class="col-md-3 col-sm-4 col-xs-6">
                   <%= link_to product_path(product) do %>
                     <div class="product-user-image">
-                      <img src=""  alt="">
+                      <%= image_tag product.image.image_url %>
                     </div>
                     <div class="text text-center">
                       <p><%= product.title %></p>
@@ -42,7 +46,7 @@
                <div class="col-md-3 col-sm-4 col-xs-6">
                    <%= link_to product_path(product_like.product) do %>
                      <div class="product-user-image">
-                       <img src=""  alt="">
+                       <%= image_tag product_like.product.image.image_url %>
                      </div>
                      <div class="text text-center">
                        <p><%= product_like.product.title %></p>
