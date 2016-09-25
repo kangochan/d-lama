@@ -44,7 +44,9 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? && current_user.published? %>
               <li>
-                <%= link_to "作品投稿", new_product_path %>
+                <%= link_to new_product_path do %>
+                  <span class="product-post-btn">作品投稿</span>
+                <% end %>
               </li>
             <% end %>
             <li class="dropdown">

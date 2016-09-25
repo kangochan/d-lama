@@ -1,7 +1,3 @@
-// Place all the styles related to the products controller here.
-// They will automatically be included in application.scss.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 /*------------------------  作品画面 product/show.html.erb  ------------------------*/
 .product-detail{
   padding-top: 20px;
@@ -22,6 +18,9 @@
   font-size: 1.5em;
   font-weight: bold;
   margin-top: 0;
+}
+
+.product-edit-btn{
 }
 
 .product-info{
@@ -135,6 +134,12 @@
 
 .search-result{
   margin-top: 20px;
+}
+
+/*------------------------  product/new.html.erb & edit.html.erb  ------------------------*/
+.form-product-date{
+  display: inline-block;
+  width: auto;
 }
 
 

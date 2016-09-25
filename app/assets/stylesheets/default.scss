@@ -11,14 +11,18 @@ a:visited {text-decoration:none;}
 a:hover {text-decoration:none;}
 a:active {text-decoration:none;}
 
-.btn, .form-control{
-  border-radius: 0px;
-}
 
 /*------------------------  ヘッダー common/header.html.erb  ------------------------*/
 .header{
   background-color: #ffd700;
   margin-bottom: 0px;
+}
+
+.product-post-btn{
+  color: #ff0000;
+  font-weight: bold;
+  border: 2px solid #ff0000;
+  padding: 5px;
 }
 
 .username{
