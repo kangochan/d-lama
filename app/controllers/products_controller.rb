@@ -1,7 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.order('id ASC').limit(3)
+    @products = Product.where(date: Date.today.wday)
+    @nextproducts = Product.where(date: Date.tomorrow.wday)
     product_ids = Review.group(:product_id).order('count_product_id DESC').limit(3).count(:product_id).keys
     @ranking = product_ids.map { |id| Product.find(id) }
   end
@@ -43,7 +44,7 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site, image_attributes: [:id, :image_url])
+    params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site, :date, image_attributes: [:id, :image_url])
   end
 
 end

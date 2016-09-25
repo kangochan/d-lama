@@ -27,6 +27,13 @@
               </div>
 
               <div class="form-group">
+                <%= f.label :曜日, class: "control-label col-sm-3" %>
+                  <div class="col-sm-9">
+                    <%= f.number_field :date, placeholder: "曜日", class: "form-control" %>
+                  </div>
+              </div>
+
+              <div class="form-group">
                 <%= f.label :会社, class: "control-label col-sm-3" %>
                 <div class="col-sm-9">
                   <%= f.text_field :company, placeholder: "制作", class: "form-control" %>
