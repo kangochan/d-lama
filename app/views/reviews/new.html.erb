@@ -8,8 +8,8 @@
           </div>
         <div class="col-md-6 col-sm-6 hidden-xs">
           <h1 class="product-title"><%= @product.title %></h1>
-          <h5 class="product-time"><%= @product.year %>年<%= @product.month %>月期</h5>
-          <h5 class="product-company">制作：<%= @product.company %></h5>
+          <p class="product-time">放送開始：<%= @product.date.strftime("%Y年%m月") %></p>
+          <p class="product-company">制作：<%= @product.company %></p>
         </div>
         <%= form_for [@product, @review] do |f| %>
 
@@ -39,7 +39,7 @@
           </div>
 
           <div class="form-group text-center">
-            <%= f.submit "投稿" %>
+            <%= f.submit "投稿", class:"btn btn-danger" %>
           </div>
         <% end %>
         </div>

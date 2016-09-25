@@ -44,7 +44,11 @@ class ProductsController < ApplicationController
 
   private
   def product_params
+<<<<<<< HEAD
     params.require(:product).permit(:title, :detail, :year, :month, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site, :date, image_attributes: [:id, :image_url])
+=======
+    params.require(:product).permit(:title, :detail, :date, :twitter, :wikipedia, :amazon, :site, :image_url, :company, :director, :playwrite, :site, image_attributes: [:id, :image_url])
+>>>>>>> modify_some_design
   end
 
 end

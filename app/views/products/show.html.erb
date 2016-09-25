@@ -3,12 +3,16 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <div class="col-md-5 col-sm-6">
-          <h2 class="product-title"><%= @product.title %></h2>
-          <% if user_signed_in? && current_user.published? %>
-            <%= link_to "管理者", edit_product_path(@product) %>
-          <% end %>
+          <h1 class="product-title"><%= @product.title %></h1>
             <ul class="product-info list-inline">
-              <li>放送開始：<%= @product.year %>年<%= @product.month %>月</li>
+              <% if user_signed_in? && current_user.published? %>
+                <li>
+                  <%= link_to edit_product_path(@product), class: "btn btn-primary btn-xs product-edit-btn" do %>
+                    <i class="fa fa-cogs fa-fw" aria-hidden="true"></i>編集
+                  <% end %>
+                </li>
+              <% end %>
+              <li>放送開始：<%= @product.date.strftime("%Y年%m月") %></li>
               <li>制作：<%= @product.company %></li>
             </ul>
           <div class="product-image">
@@ -96,7 +100,9 @@
               <div class="review-header text-center">
                 <i class="fa fa-th-list fa-fw" aria-hidden="true"></i>ストーリー構成
                 <% if user_signed_in? && current_user.published? %>
-                  <%= link_to "管理者", new_product_product_structure_path(@product) %>
+                  <%= link_to edit_product_path(@product), class: "btn btn-primary btn-sm product-edit-btn" do %>
+                    <i class="fa fa-cogs fa-fw" aria-hidden="true"></i>編集
+                  <% end %>
                 <% end %>
               </div>
               <div class="product-structure">
@@ -193,7 +199,9 @@
             <div class="product-xs-structure">
               <p>ストーリー構成</p>
                 <% if user_signed_in? && current_user.published? %>
-                  <%= link_to "管理者", new_product_product_structure_path(@product) %>
+                  <%= link_to edit_product_path(@product), class: "btn btn-primary btn-xs product-edit-btn" do %>
+                    <i class="fa fa-cogs fa-fw" aria-hidden="true"></i>編集
+                  <% end %>
                 <% end %>
               <% @product.product_structures.each do |product_structure| %>
               <p>第<%= product_structure.story_number %>話：<%= product_structure.subtitle %></p>

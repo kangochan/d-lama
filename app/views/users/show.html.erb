@@ -10,10 +10,10 @@
           <% end %>
         </div>
         <div class="col-md-10 col-sm-9 col-xs-7">
-          <p><%= @user.nickname %></p>
+          <h1 class="user-nickname"><%= @user.nickname %></h1>
           <p><%= @user.introduction %></p>
           <% if @user == current_user %>
-            <%= link_to edit_user_path(current_user), class:"btn btn-default btn-sm" do %>
+            <%= link_to edit_user_path(current_user), class:"btn btn-default btn-xs" do %>
               <i class="fa fa-cog fa-fw" aria-hidden="true"></i>プロフィール編集
             <% end %>
           <% end %>
