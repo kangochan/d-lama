@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160925101337) do
-=======
-ActiveRecord::Schema.define(version: 20160925091054) do
->>>>>>> modify_some_design
+ActiveRecord::Schema.define(version: 20160925134949) do
 
   create_table "casts", force: :cascade do |t|
     t.string   "cast",       limit: 255
@@ -61,11 +57,8 @@ ActiveRecord::Schema.define(version: 20160925091054) do
     t.text     "site",        limit: 65535
     t.integer  "likes_count", limit: 4
     t.text     "wikipedia",   limit: 65535
-<<<<<<< HEAD
-    t.integer  "date",        limit: 4
-=======
     t.date     "date"
->>>>>>> modify_some_design
+    t.integer  "date_day",    limit: 4
   end
 
   create_table "products_casts", force: :cascade do |t|
