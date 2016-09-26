@@ -2,15 +2,15 @@
   <% if product.product_like_user(current_user.id) %>
     <%= button_to product_product_like_path(product, like), method: :delete, class:"btn btn-link", remote: true do %>
       <%= fa_icon("bookmark") %>
-      <p><%= product.likes_count %></p>
+      <p><%= product.likes_count.to_i %></p>
     <% end %>
   <% else %>
     <%= button_to product_product_likes_path(product), class:"btn btn-link", remote: true do %>
       <%= fa_icon("bookmark-o") %>
-      <p><%= product.likes_count %></p>
+      <p><%= product.likes_count.to_i %></p>
     <% end %>
   <% end %>
 <% else %>
     <%= fa_icon("bookmark-o") %>
-    <p><%= product.likes_count %></p>
+    <p><%= product.likes_count.to_i %></p>
 <% end %>

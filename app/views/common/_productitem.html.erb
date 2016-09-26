@@ -1,0 +1,18 @@
+<%= link_to product_path(product) do %>
+  <div class="image">
+    <%= image_tag product.image.image_url %>
+  </div>
+  <div class="title text-center">
+    <p><%= product.title %></p>
+  </div>
+<% end %>
+<ul class="data list-inline text-center">
+  <li class="marks text-center">
+    <%= link_to new_product_review_path(product) do %>
+      <i class="fa fa-pencil fa-fw" aria-hidden="true"></i><%= product.reviews.count.to_i %>
+    <% end %>
+  </li>
+  <li class="clip text-center">
+    <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i><%= product.likes_count.to_i %>
+  </li>
+</ul>
