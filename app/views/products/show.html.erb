@@ -22,36 +22,41 @@
             <div class="product-rating">
              <% if @product.reviews.present? %>
               <div id="star_rank"></div>
-              <span class="rate-number"><%= @product.reviews.average(:rate).round(1) %></span>
-              <span class="number">(<%= @product.reviews.count %>)</span>
+              <ul class="product-ave-rate list-inline">
+                <li class="ave-rate-text">みんなの評価</li>
+                <li class="ave-rate-number"><%= @product.reviews.average(:rate).round(1) %>点</li>
+              </ul>
              <% else %>
               <div id="empty"></div>
-              <span class="rate-number">0</span>
-              <span class="number">(0)</span>
+              <ul class="product-ave-rate list-inline">
+                <li class="ave-rate-text">みんなの評価はまだありません</li>
+              </ul>
              <% end %>
             </div>
             <ul class="product-data list-inline text-right">
               <li class="product-clip text-center">
-                <%= link_to new_product_review_path(@product) do %>
-                  <i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>
+                <%= link_to new_product_review_path(@product), class: "btn btn-link" do %>
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
                     <p><%=@product.reviews.count %></p>
                 <% end %>
               </li>
-              <li class="product-marks text-center"><%= render partial: "product_likes/product_likes", locals: { product: @product, like: @like, likes: @likes } %></li>
+              <li class="product-mark text-center">
+                <%= render partial: "product_likes/product_likes", locals: { product: @product, like: @like, likes: @likes } %>
+              </li>
             </ul>
           </div>
               <div class="product-media">
                 <div class="row text-center">
-                  <div class="col-xs-2 col-xs-offset-2">
+                  <div class="col-xs-3">
                     <a href="<%= @product.site %>"><i class="fa fa-link" aria-hidden="true"></i></a><p>サイト</p>
                   </div>
-                  <div class="col-xs-2">
+                  <div class="col-xs-3">
                     <a href="<%= @product.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a><p>Twitter</p>
                   </div>
-                  <div class="col-xs-2">
+                  <div class="col-xs-3">
                     <a href="<%= @product.wikipedia %>"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a><p>Wikipedia</p>
                   </div>
-                  <div class="col-xs-2">
+                  <div class="col-xs-3">
                     <a href="<%= @product.amazon %>"><i class="fa fa-amazon" aria-hidden="true"></i></a><p>Amazon</p>
                   </div>
                 </div>
@@ -115,38 +120,40 @@
               <div class="review-header text-center">
                 <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>この作品に投稿された感想・レビュー
               </div>
-              <div class="review-item">
-                <div class="row">
-                  <div class="col-xs-2">
-                    <img src="" alt="" class="img-responsive img-circle"/>
-                  </div>
-                  <div class="col-xs-10">
-                   <% @reviews.each do |review| %>
-                    <ul class="list-inline">
-                      <%= link_to user_path(review.user) do %>
-                      <li class="review-username"><%= review.user.nickname %></li>
-                      <% end %>
-                      <li class="review-date"><%= review.created_at.strftime('%Y年%m月%d日') %></li>
-                    </ul>
-                    <p class="review-rating">
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span class="rate-number"><%= review.rate %></span>
-                    </p>
-                    <p class="review-title"><%= review.title %></p>
-                    <p class="review-text"><%= review.review %></p>
-                    <hr>
-                    <ul class="list-inline text-right">
-                      <li><%= link_to new_product_review_review_comment_path(@product, review) do %>
-                            <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)
+              <% @reviews.each do |review| %>
+                <div class="review-item">
+                  <div class="row">
+                    <div class="col-xs-2">
+                      <img src="" alt="" class="img-responsive img-circle"/>
+                    </div>
+                    <div class="col-xs-10">
+                      <div class="review-name-date">
+                        <p class="review-username">
+                          <%= link_to user_path(review.user) do %>
+                            <%= review.user.nickname %>
                           <% end %>
-                      </li>
-                      <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
-                    </ul>
-                   <% end %>
-                  <%= paginate @reviews %>
+                        </p>
+                        <p class="review-date text-right"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+                      </div>
+                      <p class="review-rating">
+                        <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+                        <span class="rate-number"><%= review.rate %></span>
+                      </p>
+                      <p class="review-title"><%= review.title %></p>
+                      <p class="review-text"><%= review.review %></p>
+                      <hr class="review-item-hr">
+                      <ul class="review-item-marks list-inline text-right">
+                        <li><%= link_to new_product_review_review_comment_path(@product, review) do %>
+                              <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)
+                            <% end %>
+                        </li>
+                        <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
+              <%= paginate @reviews %>
             </div>
             <div class="col-md-3 hidden-sm">
               <div class="review-header text-center">
@@ -217,38 +224,40 @@
                 <% end %>
               </div>
             </div>
-            <div class="review-item">
-              <div class="row">
-                <div class="col-xs-2">
-                  <img src="" alt="" class="img-responsive img-circle"/>
-                </div>
-                <div class="col-xs-10">
-                 <% @reviews.each do |review| %>
-                  <ul class="list-inline">
-                   <%= link_to user_path(review.user) do %>
-                    <li class="review-username"><%= review.user.nickname %></li>
-                   <% end %>
-                    <li class="review-date"><%= review.created_at.strftime('%Y年%m月%d日') %></li>
-                  </ul>
-                  <p class="review-rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <span class="rate-number"><%= review.rate %></span>
-                  </p>
-                  <p class="review-title"><%= review.title %></p>
-                  <p class="review-text"><%= review.review %></p>
-                  <hr>
-                  <ul class="list-inline text-right">
-                    <li><%= link_to new_product_review_review_comment_path(@product, review) do %>
-                          <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>(<%= review.review_comments.count %>)
+            <% @reviews.each do |review| %>
+              <div class="review-item">
+                <div class="row">
+                  <div class="col-xs-2">
+                    <img src="" alt="" class="img-responsive img-circle"/>
+                  </div>
+                  <div class="col-xs-10">
+                    <div class="review-name-date">
+                      <p class="review-username">
+                        <%= link_to user_path(review.user) do %>
+                          <%= review.user.nickname %>
                         <% end %>
-                    </li>
-                    <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
-                  </ul>
-                 <% end %>
-                <%= paginate @reviews %>
+                      </p>
+                      <p class="review-date text-right"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+                    </div>
+                    <p class="review-rating">
+                      <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+                      <span class="rate-number"><%= review.rate %></span>
+                    </p>
+                    <p class="review-title"><%= review.title %></p>
+                    <p class="review-text"><%= review.review %></p>
+                    <hr class="review-item-hr">
+                    <ul class="review-item-marks list-inline text-right">
+                      <li><%= link_to new_product_review_review_comment_path(@product, review) do %>
+                            <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)
+                          <% end %>
+                      </li>
+                      <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
+            <%= paginate @reviews %>
           </div>
           <div role="tabpanel" class="tab-pane" id="cast">
             <div class="product-scriptwriter">

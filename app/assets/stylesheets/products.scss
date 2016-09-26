@@ -36,6 +36,15 @@
   padding: 15px 0;
 }
 
+.product-ave-rate{
+  font-size: 1.1em;
+  margin: 10px 0 0 0;
+}
+
+.ave-rate-text{
+  font-weight: bold;
+}
+
 .product-data{
   margin-left: auto;
 }
@@ -45,9 +54,10 @@
   padding-top: 10px;
 }
 
-.product-marks, .product-clip{
+.product-mark, .product-clip{
   background-color: #ffd700;
   margin-left: auto;
+  border-radius: 5%;
 }
 
 .product-media{
@@ -100,14 +110,6 @@
 
 .product-nav-content{
   margin-top: 20px;
-}
-
-.fa-star{
-  color: #ffd700;
-}
-
-.rate-number{
-  color: #ffd700;
 }
 
 /*------------------------  作品画面 product/show.html.erb  ------------------------*/
@@ -187,21 +189,48 @@
 
 /*-----  commmon/reviewitem.html.erb  ------*/
 
+.review-lists{
+
+}
+
 .review-item{
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
+
+.review-name-date{
+  overflow: hidden;
+}
+
 .review-username{
-  font-size: 1.2em
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  float: left;
 }
 
 .review-date{
   color: #afa9a9;
+  margin-bottom: 5px;
+}
+
+.review-rating{
+  color: #ffd700;
+  margin-bottom: 5px;
 }
 
 .review-title{
   font-size: 1.2em;
   font-weight: bold;
+  margin: 0px;
+}
+
+.review-item-hr{
+  margin: 10px 0px;
+}
+
+.review-item-marks{
+  margin: 0px;
 }
 
 .review-header{

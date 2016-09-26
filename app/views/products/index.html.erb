@@ -9,18 +9,7 @@
             </div>
               <% @products.each do |product| %>
                 <div class="col-md-4 col-sm-4 col-xs-6">
-                  <a href="/products/<%= product.id %>">
-                    <div class="image">
-                      <%= image_tag product.image.image_url %>
-                    </div>
-                    <div class="title text-center">
-                      <p><%= product.title %></p>
-                    </div>
-                  </a>
-                  <ul class="data list-inline text-center">
-                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
-                    <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
-                  </ul>
+                  <%= render partial: "common/productitem", locals: {product: product} %>
                 </div>
               <% end %>
           </div>
@@ -30,18 +19,8 @@
             </div>
               <% @nextproducts.each do |product| %>
                 <div class="col-md-4 col-sm-4 col-xs-6">
-                  <a href="/products/<%= product.id %>">
-                    <div class="image">
-                      <%= image_tag product.image.image_url %>
-                    </div>
-                    <div class="title text-center">
-                      <p><%= product.title %></p>
-                    </div>
-                  </a>
-                  <ul class="data list-inline text-center">
-                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
-                    <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
-                  </ul>
+                  <%= render partial: "common/productitem", locals: {product: product} %>
+                </div>
                 </div>
               <% end %>
           </div>
@@ -53,14 +32,7 @@
             </div>
             <% @ranking.each.with_index(1) do |product, i| %>
               <div class="col-md-12 col-sm-4 col-xs-6">
-                <%= link_to product_path(product) do %>
-                  <div class="image">
-                    <%= image_tag product.image.image_url %>
-                  </div>
-                  <div class="text text-center">
-                    <p><%= product.title %></p>
-                  </div>
-                <% end %>
+                <%= render partial: "common/productitem", locals: {product: product} %>
                 <p class="ranking-text">
                   <span><%= i %></span>
                 </p>

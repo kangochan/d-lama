@@ -2,15 +2,15 @@
   <% if review.review_like_user(current_user.id) %>
     <%= button_to product_review_review_like_path(review.product, review, review_like), method: :delete, class:"btn btn-link", remote: true do %>
       <%= fa_icon("heart") %>
-      <%= review.likes_count %>
+      <%= review.likes_count.to_i %>
     <% end %>
   <% else %>
     <%= button_to product_review_review_likes_path(review.product, review), class:"btn btn-link", remote: true do %>
       <%= fa_icon("heart-o") %>
-      <%= review.likes_count %>
+      <%= review.likes_count.to_i %>
     <% end %>
   <% end %>
 <% else %>
     <%= fa_icon("heart-o") %>
-    <%= review.likes_count %>
+    <%= review.likes_count.to_i %>
 <% end %>
