@@ -45,52 +45,52 @@
               </li>
             </ul>
           </div>
-              <div class="product-media">
-                <div class="row text-center">
-                  <div class="col-xs-3">
-                    <a href="<%= @product.site %>"><i class="fa fa-link" aria-hidden="true"></i></a><p>サイト</p>
-                  </div>
-                  <div class="col-xs-3">
-                    <a href="<%= @product.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a><p>Twitter</p>
-                  </div>
-                  <div class="col-xs-3">
-                    <a href="<%= @product.wikipedia %>"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a><p>Wikipedia</p>
-                  </div>
-                  <div class="col-xs-3">
-                    <a href="<%= @product.amazon %>"><i class="fa fa-amazon" aria-hidden="true"></i></a><p>Amazon</p>
-                  </div>
-                </div>
-              </div>
         </div>
-          <!-- PC版 -->
-            <div class="col-md-7 col-sm-6 hidden-xs">
-              <div class="md-sm-cast">
-                <div class="product-playwrite">
-                  <p>脚本</p>
-                  <p><span class="cast-tab"><%= @product.playwrite %></span></p>
-                </div>
-                <div class="product-director">
-                  <p>演出</p>
-                  <p><span class="cast-tab"><%= @product.director %></span></p>
-                </div>
-                <div class="product-cast">
-                  <p>キャスト</p>
-                  <ul class="list-inline">
-                    <% @product.casts.each do |cast| %>
-                      <li class="cast-tab">
-                        <%= link_to cast_path(cast) do %>
-                          <%= cast.cast %>
-                        <% end %>
-                      </li>
+        <!-- PC版 -->
+        <div class="col-md-7 col-sm-6">
+          <div class="md-sm-cast hidden-xs">
+            <div class="product-playwrite">
+              <p>脚本</p>
+              <p><span class="cast-tab"><%= @product.playwrite %></span></p>
+            </div>
+            <div class="product-director">
+              <p>演出</p>
+              <p><span class="cast-tab"><%= @product.director %></span></p>
+            </div>
+            <div class="product-cast">
+              <p>キャスト</p>
+              <ul class="list-inline">
+                <% @product.casts.each do |cast| %>
+                  <li class="cast-tab">
+                    <%= link_to cast_path(cast) do %>
+                      <%= cast.cast %>
                     <% end %>
-                  </ul>
-                </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <div class="md-sm-story hidden-xs">
+            <p>あらすじ</p>
+            <p><%= @product.detail %></p>
+          </div>
+          <div class="product-media">
+            <div class="row text-center">
+              <div class="col-md-2 col-xs-3">
+                <a href="<%= @product.site %>"><i class="fa fa-link" aria-hidden="true"></i></a><p>サイト</p>
               </div>
-              <div class="md-sm-story">
-                <p>あらすじ</p>
-                <p><%= @product.detail %></p>
+              <div class="col-md-2 col-xs-3">
+                <a href="<%= @product.twitter %>"><i class="fa fa-twitter" aria-hidden="true"></i></a><p>Twitter</p>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <a href="<%= @product.wikipedia %>"><i class="fa fa-wikipedia-w" aria-hidden="true"></i></a><p>Wikipedia</p>
+              </div>
+              <div class="col-md-2 col-xs-3">
+                <a href="<%= @product.amazon %>"><i class="fa fa-amazon" aria-hidden="true"></i></a><p>Amazon</p>
               </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
