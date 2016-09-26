@@ -15,15 +15,19 @@
           </p>
           <p class="review-title"><%= @review.title %></p>
           <p class="review-text"><%= @review.review %></p><hr>
+          <div class="row">
           <% @review.review_comments.reverse_each do |review_comment| %>
-            <ul class="list-inline">
-              <%= link_to user_path(review_comment.user) do %>
-                <li class="review_comment-username"><%= review_comment.nickname %></li>
-              <% end %>
-                <li class="review_comment-date"><%= review_comment.created_at.strftime('%Y年%m月%d日') %></li><br>
-                <li class="review_comment-username"><%= review_comment.comment %></li>
-            </ul><hr>
+            <div class="col-xs-offset-1 col-xs-10">
+              <ul class="list-inline">
+                <%= link_to user_path(review_comment.user) do %>
+                  <li class="review_comment-username"><%= review_comment.nickname %></li>
+                <% end %>
+                  <li class="review_comment-date"><%= review_comment.created_at.strftime('%Y年%m月%d日') %></li><br>
+                  <li class="review_comment-username"><%= review_comment.comment %></li>
+              </ul><hr>
+            </div>
           <% end %>
+        </div>
           <%= form_for [@review.product, @review, @review_comment] do |f| %>
             <div class="form-group">
             <%= f.label :comment, class: "sr-only" %><br />
