@@ -18,7 +18,7 @@
                     </div>
                   </a>
                   <ul class="data list-inline text-center">
-                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><%= product.likes_count %></li>
                     <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
                   </ul>
                 </div>
@@ -30,17 +30,17 @@
             </div>
               <% @nextproducts.each do |product| %>
                 <div class="col-md-4 col-sm-4 col-xs-6">
-                  <a href="/products/<%= product.id %>">
+                  <%= link_to product_path(product) do %>
                     <div class="image">
                       <%= image_tag product.image.image_url %>
                     </div>
                     <div class="title text-center">
                       <p><%= product.title %></p>
                     </div>
-                  </a>
+                  <% end %>
                   <ul class="data list-inline text-center">
-                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
-                    <li class="clip text-center"><a href="/products/<%= product.id %>/reviews/new"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %></a></li>
+                    <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><%= product.likes_count %></li>
+                    <li class="clip text-center"><%= link_to new_product_review_path(product) do %><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %><% end %></li>
                   </ul>
                 </div>
               <% end %>
@@ -61,6 +61,10 @@
                     <p><%= product.title %></p>
                   </div>
                 <% end %>
+                <ul class="data list-inline text-center">
+                  <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><%= product.likes_count %></li>
+                  <li class="clip text-center"><%= link_to new_product_review_path(product) do %><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %><% end %></li>
+                </ul>
                 <p class="ranking-text">
                   <span><%= i %></span>
                 </p>

@@ -13,7 +13,7 @@
               </div>
             <% end %>
             <ul class="data list-inline text-center">
-              <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+              <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><%= product.likes_count %></li>
               <li class="clip text-center">
                 <%= link_to new_product_review_path(product) do %>
                   <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>

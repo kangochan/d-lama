@@ -7,14 +7,14 @@
             <div class="col-md-3 col-sm-4 col-xs-6">
               <%= link_to product_path(product) do %>
                 <div class="image">
-                  <img src="<%= product.image %>" alt=""/>
+                  <%= image_tag product.image.image_url %>
                 </div>
                 <div class="title text-center">
                   <p><%= product.title %></p>
                 </div>
               <% end %>
               <ul class="data list-inline text-center">
-                <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>1000</li>
+                <li class="marks text-center"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><%= product.likes_count %></li>
                 <li class="clip text-center">
                   <%= link_to new_product_review_path(product) do %>
                     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span><%= product.reviews.count %>

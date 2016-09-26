@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
 
   def index
-    @products = Product.where(date_day: Date.today.wday)
-    @nextproducts = Product.where(date_day: Date.tomorrow.wday)
+    @products = Product.where(date_day: Date.today.wday).limit(6)
+    @nextproducts = Product.where(date_day: Date.tomorrow.wday).limit(6)
     product_ids = Review.group(:product_id).order('count_product_id DESC').limit(3).count(:product_id).keys
     @ranking = product_ids.map { |id| Product.find(id) }
   end
