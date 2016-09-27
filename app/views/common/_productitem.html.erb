@@ -1,14 +1,20 @@
-<%= link_to product_path(product) do %>
-  <div class="image">
-    <%= image_tag product.image.image_url %>
+<div class="product-item">
+  <%= link_to product_path(product) do %>
+    <div class="image">
+      <%= image_tag product.image.image_url %>
+    </div>
+  <% end %>
+  <div class="line">
+    <%= link_to product_path(product) do %>
+      <div class="title text-center">
+        <%= product.title %>
+      </div>
+    <% end %>
+    <div class="review text-center">
+      <i class="fa fa-star fa-fw" aria-hidden="true"></i>
+      <span class="rate-number"><%= review_rate %></span>
+    </div>
   </div>
-  <div class="title text-center">
-    <%= product.title %>
-  </div>
-<% end %>
-<div class="review text-center">
-  <i class="fa fa-star fa-fw" aria-hidden="true"></i>
-  <span class="rate-number"><%= review_rate %></span>
 </div>
 <ul class="data list-inline text-center">
   <li class="marks text-center">

@@ -25,12 +25,12 @@
           </div>
         </div>
         <div class="top-ranking col-md-3">
-          <div class="row">
-            <div class="top-content-header">
-              関心度ランキング
+          <div class="row panel panel-default top-ranking-panel">
+            <div class="top-content-header panel-heading">
+              <i class="fa fa-users fa-fw" aria-hidden="true"></i>みんなのランキング
             </div>
             <% @ranking.each.with_index(1) do |product, i| %>
-              <div class="col-md-12 col-sm-4 col-xs-6">
+              <div class="col-md-12 col-sm-4 col-xs-6 panel-body">
                 <%= render partial: "common/productitem", locals: {product: product, review_rate: product.reviews.average(:rate).round(1)} %>
                 <p class="ranking-text">
                   <span><%= i %></span>

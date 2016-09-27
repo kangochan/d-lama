@@ -124,10 +124,12 @@
                 <div class="review-item">
                   <div class="row">
                     <div class="col-xs-2 review-user-image">
-                      <% if review.user.image.present? %>
-                        <%= image_tag review.user.image.image_url.thumb, class:"img-circle" %>
-                      <% else %>
-                        <%= image_tag "default.png", class:"img-circle" %>
+                      <%= link_to user_path(review.user) do %>
+                        <% if review.user.image.present? %>
+                          <%= image_tag review.user.image.image_url.thumb, class:"img-circle" %>
+                        <% else %>
+                          <%= image_tag "default.png", class:"img-circle" %>
+                        <% end %>
                       <% end %>
                     </div>
                     <div class="col-xs-10">
