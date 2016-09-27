@@ -4,7 +4,7 @@
       <div class="row">
         <% @products.each do |product| %>
           <div class="col-md-3 col-sm-4 col-xs-6">
-            <%= render partial: "common/productitem", locals: {product: product} %>
+            <%= render partial: "common/productitem", locals: {product: product, review_rate: product.reviews.average(:rate).round(1)} %>
           </div>
         <% end %>
       </div>
