@@ -8,7 +8,7 @@ class ReviewCommentsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     ReviewComment.create(create_params)
-    redirect_to controller: :products, action: :show, id: product.id
+    redirect_to controller: :review_comments, action: :new, id: product.id
   end
 
   private
