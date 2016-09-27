@@ -123,8 +123,14 @@
               <% @reviews.each do |review| %>
                 <div class="review-item">
                   <div class="row">
-                    <div class="col-xs-2">
-                      <img src="" alt="" class="img-responsive img-circle"/>
+                    <div class="col-xs-2 review-user-image">
+                      <%= link_to user_path(review.user) do %>
+                        <% if review.user.image.present? %>
+                          <%= image_tag review.user.image.image_url.thumb, class:"img-circle" %>
+                        <% else %>
+                          <%= image_tag "default.png", class:"img-circle" %>
+                        <% end %>
+                      <% end %>
                     </div>
                     <div class="col-xs-10">
                       <div class="review-name-date">
@@ -227,8 +233,12 @@
             <% @reviews.each do |review| %>
               <div class="review-item">
                 <div class="row">
-                  <div class="col-xs-2">
-                    <img src="" alt="" class="img-responsive img-circle"/>
+                  <div class="col-xs-2 review-user-image">
+                    <% if review.user.image.present? %>
+                      <%= image_tag review.user.image.image_url.thumb, class:"img-circle" %>
+                    <% else %>
+                      <%= image_tag "default.png", class:"img-circle" %>
+                    <% end %>
                   </div>
                   <div class="col-xs-10">
                     <div class="review-name-date">

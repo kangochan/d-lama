@@ -144,9 +144,14 @@
   margin: 20px 15px;
 }
 
+.top-ranking-panel{
+  border-radius: 0px;
+  border: 0px;
+}
+
 .ranking-text{
   position: absolute;
-  top: 0px;
+  top: 15px;
   left: 15px;
   font-size: 1.5em;
   color: #ffffff;
@@ -172,7 +177,14 @@
   background-color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
+
+  .review-user-image img{
+    width: 100%;
+    min-width: 40px;
+  }
 }
+
+
 
 .review-name-date{
   overflow: hidden;
