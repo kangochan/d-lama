@@ -172,7 +172,14 @@
   background-color: #ffffff;
   padding: 10px;
   margin-bottom: 10px;
+
+  .review-user-image img{
+    width: 100%;
+    min-width: 40px;
+  }
 }
+
+
 
 .review-name-date{
   overflow: hidden;
