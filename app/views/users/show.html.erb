@@ -4,19 +4,19 @@
       <div class="row user-profile">
         <div class="col-md-2 col-sm-3 col-xs-5 user-image">
           <% if @user.image.present? %>
-            <%= image_tag @user.image.image_url.thumb, class:"img-rounded" %>
+            <%= image_tag @user.image.image_url.thumb, class:"img-thumbnail" %>
           <% else %>
-            <%= image_tag "default.png", class:"profile-image" %>
+            <%= image_tag "default.png", class:"profile-image img-thumbnail" %>
           <% end %>
         </div>
         <div class="col-md-10 col-sm-9 col-xs-7">
           <h1 class="user-nickname"><%= @user.nickname %></h1>
-          <p><%= @user.introduction %></p>
           <% if @user == current_user %>
             <%= link_to edit_user_path(current_user), class:"btn btn-default btn-xs" do %>
               <i class="fa fa-cog fa-fw" aria-hidden="true"></i>プロフィール編集
             <% end %>
           <% end %>
+          <p class="user-introduction"><%= @user.introduction %></p>
         </div>
       </div>
       <div class="row">
@@ -30,14 +30,14 @@
             <div role="tabpanel" class="tab-pane active" id="review">
              <% @reviews.each.with_index do |product| %>
               <div class="col-md-3 col-sm-4 col-xs-6">
-                <%= render partial: "common/productitem", locals: {product: product} %>
+                <%= render partial: "common/productitem", locals: {product: product, review_rate: product.reviews.average(:rate).round(1)} %>
               </div>
              <% end %>
             </div>
             <div role="tabpanel" class="tab-pane" id="product">
               <% @user.product_likes.each do |product_like| %>
               <div class="col-md-3 col-sm-4 col-xs-6">
-                <%= render partial: "common/productitem", locals: {product: product_like.product} %>
+                <%= render partial: "common/productitem", locals: {product: product_like.product, review_rate: product_like.product.reviews.average(:rate).round(1)} %>
               </div>
               <% end %>
             </div>
