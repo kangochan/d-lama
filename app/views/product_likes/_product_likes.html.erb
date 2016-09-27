@@ -11,6 +11,8 @@
     <% end %>
   <% end %>
 <% else %>
+  <%= link_to new_user_registration_path, class:"btn btn-link" do %>
     <%= fa_icon("bookmark-o") %>
     <p><%= product.likes_count.to_i %></p>
+  <% end %>
 <% end %>
