@@ -40,17 +40,17 @@
                   <% end %>
                 </li>
               </ul>
-             <% @reviews.each.with_index do |product| %>
-              <div class="col-md-3 col-sm-4 col-xs-6">
-                <%= render partial: "common/productitem", locals: {product: product, review_rate: product.reviews.average(:rate).round(1)} %>
-              </div>
-             <% end %>
+              <% @reviews.each do |review| %>
+                <div class="col-sm-6 ">
+                  <%= render partial: "with_reviews/reviewitem", locals: {product: review.product, review: review} %>
+                </div>
+              <% end %>
             </div>
             <div role="tabpanel" class="tab-pane" id="product">
               <% @user.product_likes.each do |product_like| %>
-              <div class="col-md-3 col-sm-4 col-xs-6">
-                <%= render partial: "common/productitem", locals: {product: product_like.product, review_rate: product_like.product.reviews.average(:rate).round(1)} %>
-              </div>
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                  <%= render partial: "common/productitem", locals: {product: product_like.product, review_rate: product_like.product.reviews.average(:rate).round(1)} %>
+                </div>
               <% end %>
             </div>
           </div>

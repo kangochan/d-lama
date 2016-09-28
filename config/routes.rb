@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :users do
+    resources :with_reviews ,only: [:index]
     collection do
       get 'search'
     end
