@@ -11,11 +11,27 @@ a:visited {text-decoration:none;}
 a:hover {text-decoration:none;}
 a:active {text-decoration:none;}
 
+.black-link{
+  a:link {color: #5b5b5b; text-decoration:none;}
+  a:visited {color: #5b5b5b; text-decoration:none;}
+  a:hover {color: #d9534f; text-decoration: underline;}
+  a:active {color: #d9534f; text-decoration: underline;}
+
+}
+
 
 /*------------------------  ヘッダー common/header.html.erb  ------------------------*/
 .header{
   background-color: #ffd700;
   margin-bottom: 0px;
+}
+
+.header-logo{
+  padding: 0px;
+}
+
+.header-logo img{
+  height: 50px;
 }
 
 .product-post-btn{
@@ -36,14 +52,19 @@ a:active {text-decoration:none;}
 .header-user-image{
   width: 30px;
   height: 30px;
-  margin: 10px;
+  margin: 10px 0 10px 15px;
+}
+
+.top-registration{
+  color: #d9534f;
+  padding: 5px;
+  border: 2px solid #d9534f;
 }
 
 /*------------------------  common/footer.html.erb  ------------------------*/
 .footer{
   color: #000000;
   padding: 20px 0;
-  margin-top: 20px;
   background-color:  #ffd700;
 }
 

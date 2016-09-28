@@ -154,11 +154,29 @@
   top: 15px;
   left: 15px;
   font-size: 1.5em;
-  color: #ffffff;
-  background-color: #ff4500;
-  opacity: 0.8;
+  opacity: 0.9;
   padding: 10px 17px;
   border-radius: 50%;
+}
+
+.ranking-text-1{
+  color: #ffffff;
+  background-color: #ffd700;
+}
+
+.ranking-text-2{
+  color: #ffffff;
+  background-color: #c0c0c0;
+}
+
+.ranking-text-3{
+  color: #ffffff;
+  background-color: #c47222;
+}
+
+.ranking-text-4, .ranking-text-5, .ranking-text-6{
+  color: #ffffff;
+  background-color: #06ff36;
 }
 
 /*------------------------  product/new.html.erb & edit.html.erb  ------------------------*/

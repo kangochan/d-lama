@@ -134,10 +134,8 @@
                     </div>
                     <div class="col-xs-10">
                       <div class="review-name-date">
-                        <p class="review-username">
-                          <%= link_to user_path(review.user) do %>
-                            <%= review.user.nickname %>
-                          <% end %>
+                        <p class="review-username black-link">
+                          <%= link_to review.user.nickname, user_path(review.user) %>
                         </p>
                         <p class="review-date text-right"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
                       </div>
@@ -149,9 +147,10 @@
                       <p class="review-text"><%= review.review %></p>
                       <hr class="review-item-hr">
                       <ul class="review-item-marks list-inline text-right">
-                        <li><%= link_to new_product_review_review_comment_path(@product, review) do %>
-                              <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)
-                            <% end %>
+                        <li class="black-link">
+                          <%= link_to new_product_review_review_comment_path(@product, review) do %>
+                            <i class="fa fa-comment-o fa-fw" aria-hidden="true"></i>コメント(<%= review.review_comments.count %>)
+                          <% end %>
                         </li>
                         <li class="review-marks-<%= review.id %>"><%= render partial: "review_likes/review_likes", locals: { review: review, review_like: @review_like, review_likes: @review_likes } %></li>
                       </ul>
