@@ -3,10 +3,12 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-          <div class="row">
-            <div class="col-xs-2">
-              <img src="" alt="" class="img-responsive img-circle"/>
-            </div>
+          
+          <div class="review-item">
+            <div class="row">
+              <div class="col-xs-2">
+                <img src="" alt="" class="img-responsive img-circle"/>
+              </div>
               <%= link_to user_path(@review.user) do %>
               <div class="col-xs-10">
                 <div class="review-name-date">
@@ -16,49 +18,46 @@
                   </p>
                   <p class="review-date text-right"><%= @review.created_at.strftime('%Y年%m月%d日') %></p>
                 </div>
-              <p class="review-rating">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <span class="rate-number"><%= @review.rate %></span><hr>
-              </p>
-              <p class="review-title"><%= @review.title %></p>
-              <p class="review-text"><%= @review.review %></p>
+                  <p class="review-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <span class="rate-number"><%= @review.rate %></span>
+                  </p>
+                  <p class="review-title"><%= @review.title %></p>
+                  <p class="review-text"><%= @review.review %></p>
               </div>
             </div>
+          </div>
           <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= form_for [@review.product, @review, @review_comment] do |f| %>
+                <div class="form-group">
+                <%= f.label :comment, class: "sr-only" %><br />
+                <%= f.text_area :comment, placeholder: "コメント", class: "form-control", rows: "3" %>
+                </div>
+                <div class="form-group text-center">
+                  <%= f.submit "投稿" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
           <% @review.review_comments.reverse_each do |review_comment| %>
-            <div class="col-xs-offset-1 col-xs-10">
-              <div class="row">
-                <div class="col-xs-2">
-                  <img src="" alt="" class="img-responsive img-circle"/>
+            <div class="row">
+              <div class="col-xs-2">
+                <img src="" alt="" class="img-responsive img-circle"/>
+              </div>
+              <div class="col-xs-10">
+                <div class="review-name-date">
+                  <p class="review-username">
+                    <%= link_to user_path(review_comment.user) do %>
+                      <%= review_comment.nickname %>
+                    <% end %>
+                  </p>
+                  <p class="review-date text-right"><%= review_comment.created_at.strftime('%Y年%m月%d日') %></p>
                 </div>
-                <div class="col-xs-10">
-                  <div class="review-name-date">
-                    <p class="review-username">
-                      <%= link_to user_path(review_comment.user) do %>
-                        <%= review_comment.nickname %>
-                      <% end %>
-                    </p>
-                    <p class="review-date text-right"><%= review_comment.created_at.strftime('%Y年%m月%d日') %></p><hr>
-                  </div>
-                    <p class="review_comment-username"><%= review_comment.comment %></p>
-                </div>
+                  <p class="review_comment-username"><%= review_comment.comment %></p><hr>
               </div>
             </div>
           <% end %>
-        </div>
-        <div class="row">
-          <div class="col-xs-10 col-xs-offset-1">
-            <%= form_for [@review.product, @review, @review_comment] do |f| %>
-              <div class="form-group">
-              <%= f.label :comment, class: "sr-only" %><br />
-              <%= f.text_area :comment, placeholder: "コメント", class: "form-control", rows: "3" %>
-              </div>
-              <div class="form-group text-center">
-                <%= f.submit "投稿" %>
-              </div>
-            <% end %>
-          </div>
-        </div>
         </div>
       </div>
     </div>
