@@ -9,3 +9,19 @@
 .review-comment{
   padding-top: 20px;
 }
+
+.comment-product-image img{
+  width: 100%;
+}
+
+.review-user-image img{
+  width: 100%;
+  max-width: 50px;
+  min-width: 35px;
+}
+
+.review-comment-user-image img{
+  width: 100%;
+  max-width: 40px;
+  min-width: 30px;
+}
