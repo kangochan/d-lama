@@ -1,0 +1,16 @@
+<div class="row reviewitem">
+  <div class="col-xs-5">
+    <%= link_to product_path(product) do %>
+      <div class="reviewitem-image">
+        <%= image_tag product.image.image_url %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-xs-7">
+    <p class="reviewitem-product-title"><%= product.title %></p>
+    <p class="reviewitem-rate"><i class="fa fa-star fa-fw" aria-hidden="true"></i><span class="rate-number"><%= review.rate %></span></p>
+    <p class="reviewitem-title"><%= review.title %></p>
+    <p class="reviewitem-text"><%= review.review %></p>
+    <p class="reviewitem-date text-right"><%= review.created_at.strftime('%Y年%m月%d日') %></p>
+  </div>
+</div>
