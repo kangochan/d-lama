@@ -25,3 +25,9 @@
   max-width: 40px;
   min-width: 30px;
 }
+
+@media (min-width: 480px) {
+  .review-comment-btn{
+    margin-top: 35px;
+  }
+}
