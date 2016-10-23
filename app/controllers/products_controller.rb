@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
       @like = ProductLike.find_by(user_id: current_user.id, product_id: params[:id])
       @review_like = ReviewLike.find_by(user_id: current_user.id)
     end
+    @recommendedproducts = Product.where(company: @product.company).limit(3)
   end
 
   def search
